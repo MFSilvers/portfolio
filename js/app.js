@@ -4,7 +4,6 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            loading: true,
             scrolled: false,
             mobileMenuOpen: false,
             currentTestimonial: 0,
@@ -85,7 +84,7 @@ createApp({
                     technologies: ['Vue.js', 'PHP', 'MySQL', 'Google Maps API'],
                     category: 'fullstack',
                     demo: 'https://gymfinder.onstep.it',
-                    github: '#',
+                    github: 'https://github.com/MFSilvers/Palestra',
                     delay: 100
                 },
                 
@@ -152,11 +151,6 @@ createApp({
             
             // Setup testimonial auto-play
             this.setupTestimonialAutoPlay();
-            
-            // Hide loading screen
-            setTimeout(() => {
-                this.loading = false;
-            }, 2000);
         },
 
         async initHeroScene() {
