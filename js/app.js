@@ -132,14 +132,14 @@ createApp({
         async initializeApp() {
             // Initialize AOS
             AOS.init({
-                duration: 1000,
+                duration: 0,
                 once: true,
-                offset: 100
+                offset: 0
             });
 
             // Initialize Three.js scenes
-            await this.initHeroScene();
-            await this.initAvatarScene();
+            //await this.initHeroScene();
+           // await this.initAvatarScene();
             
             // Setup scroll listeners
             this.setupScrollListeners();
