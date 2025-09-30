@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel - Full-Stack Developer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" v-show="loading">
+            <div class="loader">
+                <div class="loader-inner">
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                </div>
+                <p>Caricamento Portfolio...</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar" :class="{ 'scrolled': scrolled }">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span class="logo-text">Daniel</span>
+                    <span class="logo-dot">.</span>
+                </div>
+                <ul class="nav-menu" :class="{ 'active': mobileMenuOpen }">
+                    <li><a href="#hero" @click="scrollTo('hero')">Home</a></li>
+                    <li><a href="#about" @click="scrollTo('about')">About</a></li>
+                    <li><a href="#skills" @click="scrollTo('skills')">Skills</a></li>
+                    <li><a href="#projects" @click="scrollTo('projects')">Projects</a></li>
+                    <li><a href="#testimonials" @click="scrollTo('testimonials')">Testimonials</a></li>
+                    <li><a href="#contact" @click="scrollTo('contact')" class="cta-nav">Contatto</a></li>
+                </ul>
+                <div class="hamburger" :class="{ 'active': mobileMenuOpen }" @click="toggleMobileMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg">
+                <canvas id="hero-canvas"></canvas>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up">
+                    <h1 class="hero-title">
+                        <span class="title-line">Ciao, sono</span>
+                        <span class="title-name">Daniel</span>
+                        <span class="title-role">Full-Stack Developer</span>
+                    </h1>
+                    <p class="hero-description">
+                        Sviluppatore appassionato appena diplomato, specializzato nella creazione di 
+                        esperienze web innovative e applicazioni moderne. Trasformo idee in realtà digitali.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" @click="scrollTo('projects')">
+                            <span>Vedi i miei progetti</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn-secondary" @click="scrollTo('contact')">
+                            <span>Contattami</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-avatar" data-aos="fade-left">
+                    <div id="avatar-container"></div>
+                </div>
+            </div>
+            <div class="scroll-indicator" @click="scrollTo('about')">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span>Scorri per esplorare</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Chi sono</h2>
+                    <p class="section-subtitle">La mia storia e il mio percorso</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text" data-aos="fade-right">
+                        <p class="about-intro">
+                            Sono Daniel, un giovane sviluppatore full-stack che ha appena completato 
+                            il percorso di studi. La mia passione per la tecnologia mi spinge a 
+                            creare soluzioni innovative e user-friendly.
+                        </p>
+                        
+                        <div class="stats-container">
+                            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="stat-number" data-target="3">0</div>
+                                <div class="stat-label">Progetti Completati</div>
+                            </div>
+                            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="stat-number" data-target="8">0</div>
+                                <div class="stat-label">Tecnologie Padroneggiare</div>
+                            </div>
+                            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="stat-number" data-target="100">0</div>
+                                <div class="stat-label">% Dedizione</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-container" data-aos="fade-left">
+                        <div class="timeline">
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2024 - Diploma</h3>
+                                    <p>Completamento degli studi con focus su sviluppo web e programmazione</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2024 - GymFinder Project</h3>
+                                    <p>Sviluppo di gymfinder.onstep.it - piattaforma per la ricerca di palestre</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2025 - Futuro</h3>
+                                    <p>Pronto per nuove sfide e opportunità nel mondo dello sviluppo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Le mie competenze</h2>
+                    <p class="section-subtitle">Tecnologie e strumenti che padroneggio</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-card" v-for="skill in skills" :key="skill.id" 
+                         data-aos="zoom-in" :data-aos-delay="skill.delay">
+                        <div class="skill-icon" :class="skill.class">
+                            <i :class="skill.icon"></i>
+                        </div>
+                        <h3>{{ skill.name }}</h3>
+                        <p>{{ skill.description }}</p>
+                        <div class="skill-level">
+                            <div class="skill-bar">
+                                <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
+                            </div>
+                            <span class="skill-percentage">{{ skill.level }}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">I miei progetti</h2>
+                    <p class="section-subtitle">Lavori che dimostrano le mie competenze</p>
+                </div>
+                
+               
+                
+                <div class="projects-grid">
+                    <div class="project-card" v-for="project in filteredProjects" :key="project.id"
+                         data-aos="fade-up" :data-aos-delay="project.delay"
+                         @click="openProjectModal(project)">
+                        <div class="project-image">
+                            <img :src="project.image" :alt="project.title">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a :href="project.demo" target="_blank" class="project-link" @click.stop>
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a :href="project.github" target="_blank" class="project-link" @click.stop>
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.description }}</p>
+                            <div class="project-tech">
+                                <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
+                                    {{ tech }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Modal -->
+            <div class="modal-overlay" v-show="showProjectModal" @click="closeProjectModal">
+                <div class="project-modal" @click.stop>
+                    <button class="modal-close" @click="closeProjectModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="modal-content" v-if="selectedProject">
+                        <div class="modal-image">
+                            <img :src="selectedProject.image" :alt="selectedProject.title">
+                        </div>
+                        <div class="modal-info">
+                            <h2>{{ selectedProject.title }}</h2>
+                            <p class="modal-description">{{ selectedProject.fullDescription }}</p>
+                            <div class="modal-tech">
+                                <h4>Tecnologie utilizzate:</h4>
+                                <div class="tech-list">
+                                    <span v-for="tech in selectedProject.technologies" :key="tech" class="tech-tag">
+                                        {{ tech }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="modal-links">
+                                <a :href="selectedProject.demo" target="_blank" class="btn-primary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Demo Live
+                                </a>
+                                <a :href="selectedProject.github" target="_blank" class="btn-secondary">
+                                    <i class="fab fa-github"></i>
+                                    Codice Sorgente
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Testimonianze</h2>
+                    <p class="section-subtitle">Cosa dicono di me</p>
+                </div>
+                
+                <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-track" :style="{ transform: `translateX(-${currentTestimonial * 100}%)` }">
+                        <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.id">
+                            <div class="testimonial-content">
+                                <div class="quote-icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <p class="testimonial-text">{{ testimonial.text }}</p>
+                                <div class="testimonial-author">
+                                    <img :src="testimonial.avatar" :alt="testimonial.name">
+                                    <div class="author-info">
+                                        <h4>{{ testimonial.name }}</h4>
+                                        <span>{{ testimonial.role }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-controls">
+                        <button class="testimonial-btn prev" @click="prevTestimonial">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="testimonial-dots">
+                            <span v-for="(testimonial, index) in testimonials" :key="index"
+                                  class="dot" :class="{ active: index === currentTestimonial }"
+                                  @click="currentTestimonial = index"></span>
+                        </div>
+                        <button class="testimonial-btn next" @click="nextTestimonial">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Contattami</h2>
+                    <p class="section-subtitle">Iniziamo a lavorare insieme</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info" data-aos="fade-right">
+                        <h3>Parliamo del tuo progetto</h3>
+                        <p>Sono sempre interessato a nuove opportunità e progetti stimolanti. 
+                           Contattami per discutere come posso aiutarti a realizzare le tue idee.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <span>plopdaniel6@gmail.com</span>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <span>+39 320 644 2038</span>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Italia</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" data-aos="fade-left" @submit.prevent="submitForm">
+                        <div class="form-group">
+                            <input type="text" v-model="form.name" placeholder="Il tuo nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" v-model="form.email" placeholder="La tua email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" v-model="form.subject" placeholder="Oggetto" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea v-model="form.message" placeholder="Il tuo messaggio" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" :disabled="formSubmitting">
+                            <span v-if="!formSubmitting">Invia Messaggio</span>
+                            <span v-else>Invio in corso...</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-text">
+                        <p>&copy; 2025 Daniel. Tutti i diritti riservati.</p>
+                        <p>Realizzato con ❤️ e Vue.js</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#hero" @click="scrollTo('hero')">Home</a>
+                        <a href="#about" @click="scrollTo('about')">About</a>
+                        <a href="#projects" @click="scrollTo('projects')">Projects</a>
+                        <a href="#contact" @click="scrollTo('contact')">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-card" v-for="n in 6" :key="n" :class="`card-${n}`"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
