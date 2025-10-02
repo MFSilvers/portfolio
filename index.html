@@ -32,7 +32,6 @@
                     <li><a href="#about" @click="scrollTo('about')">About</a></li>
                     <li><a href="#skills" @click="scrollTo('skills')">Skills</a></li>
                     <li><a href="#projects" @click="scrollTo('projects')">Projects</a></li>
-                    <li><a href="#testimonials" @click="scrollTo('testimonials')">Testimonials</a></li>
                     <li><a href="#contact" @click="scrollTo('contact')" class="cta-nav">Contatto</a></li>
                 </ul>
                 <div class="hamburger" :class="{ 'active': mobileMenuOpen }" @click="toggleMobileMenu">
@@ -246,49 +245,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <h2 class="section-title">Testimonianze</h2>
-                    <p class="section-subtitle">Cosa dicono di me</p>
-                </div>
-                
-                <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-track" :style="{ transform: `translateX(-${currentTestimonial * 100}%)` }">
-                        <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.id">
-                            <div class="testimonial-content">
-                                <div class="quote-icon">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                                <p class="testimonial-text">{{ testimonial.text }}</p>
-                                <div class="testimonial-author">
-                                    <img :src="testimonial.avatar" :alt="testimonial.name">
-                                    <div class="author-info">
-                                        <h4>{{ testimonial.name }}</h4>
-                                        <span>{{ testimonial.role }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-controls">
-                        <button class="testimonial-btn prev" @click="prevTestimonial">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="testimonial-dots">
-                            <span v-for="(testimonial, index) in testimonials" :key="index"
-                                  class="dot" :class="{ active: index === currentTestimonial }"
-                                  @click="currentTestimonial = index"></span>
-                        </div>
-                        <button class="testimonial-btn next" @click="nextTestimonial">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact-section">
@@ -307,11 +263,11 @@
                         <div class="contact-methods">
                             <div class="contact-method">
                                 <i class="fas fa-envelope"></i>
-                                <span>plopdaniel6@gmail.com</span>
+                                <span id="email-display">Caricamento...</span>
                             </div>
                             <div class="contact-method">
                                 <i class="fas fa-phone"></i>
-                                <span>+39 320 644 2038</span>
+                                <span id="phone-display">Caricamento...</span>
                             </div>
                             <div class="contact-method">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -323,37 +279,12 @@
                             <a href="https://www.linkedin.com/in/daniel-plop-0b4892385/" class="social-link">
                                 <i class="fab fa-linkedin"></i>
                             </a>
-                            <a href="#" class="social-link">
+                            <a href="https://github.com/MFSilvers" class="social-link">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
+                            
                         </div>
                     </div>
-                    
-                    <form class="contact-form" data-aos="fade-left" @submit.prevent="submitForm">
-                        <div class="form-group">
-                            <input type="text" v-model="form.name" placeholder="Il tuo nome" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" v-model="form.email" placeholder="La tua email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" v-model="form.subject" placeholder="Oggetto" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea v-model="form.message" placeholder="Il tuo messaggio" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary" :disabled="formSubmitting">
-                            <span v-if="!formSubmitting">Invia Messaggio</span>
-                            <span v-else>Invio in corso...</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
                 </div>
             </div>
         </section>

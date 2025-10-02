@@ -6,17 +6,9 @@ createApp({
         return {
             scrolled: false,
             mobileMenuOpen: false,
-            currentTestimonial: 0,
             activeFilter: 'all',
             showProjectModal: false,
             selectedProject: null,
-            formSubmitting: false,
-            form: {
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
-            },
             skills: [
                 {
                     id: 1,
@@ -45,15 +37,7 @@ createApp({
                     level: 95,
                     delay: 300
                 },
-                {
-                    id: 4,
-                    name: 'Node.js',
-                    description: 'Runtime JavaScript per sviluppo backend',
-                    icon: 'fab fa-node-js',
-                    class: 'nodejs',
-                    level: 80,
-                    delay: 400
-                },
+                
                 {
                     id: 5,
                     name: 'PHP',
@@ -90,29 +74,6 @@ createApp({
                 
                 
                 
-            ],
-            testimonials: [
-                {
-                    id: 1,
-                    name: 'Marco Rossi',
-                    role: 'CTO, TechStart',
-                    text: 'Daniel ha dimostrato competenze eccezionali nello sviluppo del nostro progetto. La sua attenzione ai dettagli e la capacità di problem-solving sono impressionanti.',
-                    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
-                },
-                {
-                    id: 2,
-                    name: 'Laura Bianchi',
-                    role: 'Product Manager, InnovateLab',
-                    text: 'Lavorare con Daniel è stato fantastico. Ha trasformato le nostre idee in una realtà digitale superando le nostre aspettative. Altamente raccomandato!',
-                    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
-                },
-                {
-                    id: 3,
-                    name: 'Alessandro Verde',
-                    role: 'Founder, StartupHub',
-                    text: 'Daniel combina perfettamente competenze tecniche e creatività. Il suo approccio professionale e la qualità del codice sono di altissimo livello.',
-                    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'
-                }
             ]
         }
     },
@@ -138,7 +99,7 @@ createApp({
 
             // Initialize Three.js scenes
             //await this.initHeroScene();
-           // await this.initAvatarScene();
+            // await this.initAvatarScene();
             
             // Setup scroll listeners
             this.setupScrollListeners();
@@ -149,8 +110,9 @@ createApp({
             // Initialize counters
             this.initCounters();
             
-            // Setup testimonial auto-play
-            this.setupTestimonialAutoPlay();
+            // Decrypt contact information
+            this.decryptContactInfo();
+            
         },
 
         async initHeroScene() {
@@ -347,11 +309,6 @@ createApp({
             });
         },
 
-        setupTestimonialAutoPlay() {
-            setInterval(() => {
-                this.nextTestimonial();
-            }, 5000);
-        },
 
         scrollTo(elementId) {
             const element = document.getElementById(elementId);
@@ -381,35 +338,39 @@ createApp({
             document.body.style.overflow = 'auto';
         },
 
-        nextTestimonial() {
-            this.currentTestimonial = (this.currentTestimonial + 1) % this.testimonials.length;
-        },
-
-        prevTestimonial() {
-            this.currentTestimonial = this.currentTestimonial === 0 
-                ? this.testimonials.length - 1 
-                : this.currentTestimonial - 1;
-        },
-
-        async submitForm() {
-            this.formSubmitting = true;
-            
-            // Simulate form submission
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Reset form
-            this.form = {
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
+        decryptContactInfo() {
+            // Function to process user preferences (disguised function name)
+            const processUserPrefs = (parts) => {
+                return atob(parts.join(''));
             };
+
+            // User preference data split into parts 
+            const userEmailPref = ['cGxvcGRhbmllbDZAZ21haWwu', 'Y29t'];
+            const userPhonePref = ['KzM5IDMyMCA2NDQg', 'MjAzOA=='];
+
+            // Initialize contact display elements
+            const emailElement = document.getElementById('email-display');
+            const phoneElement = document.getElementById('phone-display');
             
-            this.formSubmitting = false;
+            if (emailElement) {
+                const email = processUserPrefs(userEmailPref);
+                emailElement.textContent = email;
+                emailElement.style.cursor = 'pointer';
+                emailElement.addEventListener('click', () => {
+                    window.location.href = 'mailto:' + email;
+                });
+            }
             
-            // Show success message (you can implement a toast notification here)
-            alert('Messaggio inviato con successo! Ti risponderò presto.');
+            if (phoneElement) {
+                const phone = processUserPrefs(userPhonePref);
+                phoneElement.textContent = phone;
+                phoneElement.style.cursor = 'pointer';
+                phoneElement.addEventListener('click', () => {
+                    window.location.href = 'tel:' + phone;
+                });
+            }
         }
+
     }
 }).mount('#app');
 
