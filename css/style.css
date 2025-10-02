@@ -189,6 +189,31 @@ html, body {
     overflow-x: hidden;
 }
 
+.profile-image-container {
+    display: flex;
+    justify-content: flex-start; /* sposta a sinistra */
+    align-items: flex-start;     /* sposta verso l'alto */
+    margin-bottom: 1rem;
+    margin-left: 1rem; /* piccolo margine dalla sinistra, puoi regolare */
+    margin-top: 0;     /* porta l'immagine più in alto */
+}
+
+.profile-image {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+}
+
+
 .hero-text h1 {
     font-family: 'Orbitron', monospace;
     margin-bottom: 2rem;
@@ -1052,6 +1077,11 @@ section {
         gap: 2rem;
     }
 
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
     .title-name {
         font-size: 3rem;
     }
@@ -1116,6 +1146,11 @@ section {
 
     .hero-content {
         padding: 0 1rem;
+    }
+
+    .profile-image {
+        width: 80px;
+        height: 80px;
     }
 
     .title-name {
