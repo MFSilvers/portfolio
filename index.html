@@ -23,12 +23,10 @@
         <!-- Navigation -->
         <nav class="navbar" :class="{ 'scrolled': scrolled }">
             <div class="nav-container">
-                <div class="nav-logo">
+                <div class="nav-logo" @click="scrollTo('hero')">
                     <span class="logo-text">Daniel</span>
-                    <span class="logo-dot">.</span>
                 </div>
                 <ul class="nav-menu" :class="{ 'active': mobileMenuOpen }">
-                    <li><a href="#hero" @click="scrollTo('hero')">Home</a></li>
                     <li><a href="#about" @click="scrollTo('about')">About</a></li>
                     <li><a href="#skills" @click="scrollTo('skills')">Skills</a></li>
                     <li><a href="#projects" @click="scrollTo('projects')">Projects</a></li>
