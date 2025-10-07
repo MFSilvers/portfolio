@@ -69,6 +69,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     overflow-x: hidden;
+    position: relative;
 }
 
 .nav-logo {
@@ -93,7 +94,7 @@ html, body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
 }
 
@@ -1056,45 +1057,64 @@ section {
     }
 }
 
+/* Desktop navigation - show all menu items */
+.hamburger {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
 @media (max-width: 768px) {
+    /* Hide desktop navigation */
+    .nav-menu {
+        display: none;
+    }
+    
+    /* Show hamburger */
     .hamburger {
         display: flex;
+        cursor: pointer;
     }
-
-    .nav-menu {
+    
+    /* Mobile menu styles when active */
+    .nav-menu.active {
         position: fixed;
         top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background: rgba(15, 15, 35, 0.98);
+        right: 20px;
+        width: 140px;
+        background: rgba(26, 26, 46, 0.85);
         backdrop-filter: blur(10px);
+        border: 1px solid rgba(79, 70, 229, 0.3);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-glow);
         flex-direction: column;
-        justify-content: start;
-        padding-top: 2rem;
-        transition: var(--transition);
-        z-index: 999;
-        border-top: 1px solid rgba(79, 70, 229, 0.2);
-    }
-
-    .nav-menu.active {
-        left: 0;
+        padding: 0.25rem 0;
+        display: flex;
+        z-index: 9999;
     }
 
     .nav-menu li {
         width: 100%;
-        text-align: center;
-        margin: 1rem 0;
+        margin: 0;
     }
 
     .nav-menu a {
         display: block;
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+        padding: 0.25rem 1rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
         transition: var(--transition);
+        border: none;
+        background: none;
+        margin: 0;
+        border-radius: 0;
+        font-size: 0.9rem;
     }
 
     .nav-menu a:hover {

@@ -251,6 +251,12 @@ createApp({
         setupScrollListeners() {
             window.addEventListener('scroll', () => {
                 this.scrolled = window.scrollY > 50;
+                
+                // Close mobile menu when scrolling (only on mobile)
+                if (this.mobileMenuOpen && window.innerWidth <= 768) {
+                    this.mobileMenuOpen = false;
+                    this.closeMobileMenu();
+                }
             });
         },
 
@@ -315,11 +321,62 @@ createApp({
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
-            this.mobileMenuOpen = false;
+            
+            // Only close mobile menu if we're on mobile
+            if (window.innerWidth <= 768) {
+                this.mobileMenuOpen = false;
+                this.closeMobileMenu();
+            }
         },
 
         toggleMobileMenu() {
             this.mobileMenuOpen = !this.mobileMenuOpen;
+            
+            if (this.mobileMenuOpen) {
+                this.openMobileMenu();
+            } else {
+                this.closeMobileMenu();
+            }
+        },
+
+        openMobileMenu() {
+            // Only apply mobile logic if we're on mobile
+            if (window.innerWidth <= 768) {
+                const menu = document.querySelector('.nav-menu');
+                if (menu) {
+                    // Move menu to body to avoid stacking context issues
+                    menu.remove();
+                    document.body.appendChild(menu);
+                    
+                    // Apply mobile menu styles
+                    menu.style.display = 'flex';
+                    menu.style.visibility = 'visible';
+                    menu.style.opacity = '1';
+                    menu.style.position = 'fixed';
+                    menu.style.top = '80px';
+                    menu.style.right = '20px';
+                    menu.style.width = '140px';
+                    menu.style.background = 'rgba(26, 26, 46, 0.85)';
+                    menu.style.backdropFilter = 'blur(10px)';
+                    menu.style.border = '1px solid rgba(79, 70, 229, 0.3)';
+                    menu.style.borderRadius = 'var(--border-radius)';
+                    menu.style.boxShadow = 'var(--shadow-glow)';
+                    menu.style.zIndex = '9999';
+                    menu.style.flexDirection = 'column';
+                    menu.style.padding = '0.25rem 0';
+                    menu.style.isolation = 'isolate';
+                }
+            }
+        },
+
+        closeMobileMenu() {
+            const menu = document.querySelector('.nav-menu');
+            if (menu) {
+                // Hide the menu
+                menu.style.display = 'none';
+                menu.style.visibility = 'hidden';
+                menu.style.opacity = '0';
+            }
         },
 
         filterProjects(category) {
