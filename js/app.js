@@ -71,6 +71,18 @@ createApp({
                     github: 'https://github.com/MFSilvers/Palestra',
                     delay: 100
                 },
+                {
+                    id: 2,
+                    title: 'chat-linkr',
+                    description: 'Piattaforma di messaggistica in tempo reale professionale e moderna',
+                    fullDescription: 'Chat-Linkr è l’app di messaggistica istantanea che ti permette di connetterti con chi vuoi, in qualsiasi momento. Registrati in pochi secondi, trova altri utenti e inizia subito a chattare in tempo reale',
+                    image: 'assets/images/chat-linkr.png',
+                    technologies: ['Vue.js', 'PHP', 'MySQL', 'bootstrap'],
+                    category: 'fullstack',
+                    demo: 'https://chat-linkr.vercel.app/',
+                    github: 'https://github.com/MFSilvers/ChatLink',
+                    delay: 100
+                },
                 
                 
                 
