@@ -83,6 +83,18 @@ createApp({
                     github: 'https://github.com/MFSilvers/ChatLink',
                     delay: 100
                 },
+                {
+                    id: 3,
+                    title: 'Finanza',
+                    description: 'Finanza è un’app web per gestire le tue finanze personali, monitorare entrate, uscite e bilancio mensile in modo semplice e intuitivo.',
+                    fullDescription: 'Finanza è un’app web per la gestione delle finanze personali che consente di registrare entrate e uscite e visualizzare il bilancio in modo semplice e chiaro, aiutando a tenere sotto controllo le proprie spese.',
+                    image: 'assets/images/Finanza.png',
+                    technologies: ['Vue.js', 'PHP', 'MySQL', 'bootstrap'],
+                    category: 'fullstack',
+                    demo: 'https://finanza-flax.vercel.app/',
+                    github: 'https://github.com/MFSilvers/Finanza-Front-end',
+                    delay: 100
+                },
                 
                 
                 
